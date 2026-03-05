@@ -27,3 +27,15 @@ func _physics_process(delta: float):
 		direction = direction.normalized()
 		# configurando la propiedad Basis que afecta la rotación
 		$Pivot.basis = Basis.looking_at(direction)
+		
+	# vector velocidad en suelo
+	target_velocity.x = direction.x * speed
+	target_velocity.z = direction.z * speed
+
+	# velocidad de caída
+	if not is_on_floor(): # Si está en el aire, caerá hacia el suelo
+		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
+
+	# Moviendo al jugador
+	velocity = target_velocity
+	move_and_slide()
