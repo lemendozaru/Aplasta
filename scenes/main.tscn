@@ -30,6 +30,8 @@ mob_scene = ExtResource("2_sugp2")
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1365542413]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=814873200]
 shape = SubResource("BoxShape3D_sgp6g")
@@ -80,4 +82,5 @@ transform = Transform3D(-0.0010427672, 0, -0.99999946, 0, 1, 0, 0.99999946, 0, -
 wait_time = 0.5
 autostart = true
 
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

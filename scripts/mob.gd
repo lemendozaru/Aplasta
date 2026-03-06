@@ -5,6 +5,8 @@ extends CharacterBody3D
 # velocidad máxima del enemigo en m/s
 @export var max_speed = 18
 
+# Emitida cuando caemos encima del enemigo
+signal squashed
 
 func _physics_process(_delta):
 	move_and_slide()
@@ -26,5 +28,9 @@ func initialize(start_position, player_position):
 	velocity = velocity.rotated(Vector3.UP, rotation.y)
 
 
-func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
+func _on_visible_on_screen_notifier_3d_screen_exited():
+	queue_free()
+	
+func squash():
+	squashed.emit()
 	queue_free()
