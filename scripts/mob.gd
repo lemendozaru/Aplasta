@@ -26,6 +26,8 @@ func initialize(start_position, player_position):
 	# Rotamos el vector de velocidad de acuerdo al enemigo
 	# para que se mueva hacia donde está girado
 	velocity = velocity.rotated(Vector3.UP, rotation.y)
+	# aleatorizamos la velocidad de animación
+	$AnimationPlayer.speed_scale = random_speed / min_speed
 
 
 func _on_visible_on_screen_notifier_3d_screen_exited():

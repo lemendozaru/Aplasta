@@ -17,7 +17,18 @@ func _on_mob_timer_timeout():
 
 	# aparecemos al mob por agregarlo a la escena principal
 	add_child(mob)
+	
+	# Conectamos el mob a la etiqueta de puntaje para actualizarla
+	mob.squashed.connect($UserInterface/ScoreLabel._on_mob_squashed.bind())
 
+func _ready():
+	$UserInterface/Retry.hide()
 
 func _on_player_hit():
 	$MobTimer.stop()
+	$UserInterface/Retry.show()
+	
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_accept") and $UserInterface/Retry.visible:
+		# esto reinicia la escena actual
+		get_tree().reload_current_scene()

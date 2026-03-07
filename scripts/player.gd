@@ -33,6 +33,13 @@ func _physics_process(delta: float):
 		direction = direction.normalized()
 		# configurando la propiedad Basis que afecta la rotación
 		$Pivot.basis = Basis.looking_at(direction)
+		# hace más rápidas las animaciones
+		$AnimationPlayer.speed_scale = 4
+	else:
+		$AnimationPlayer.speed_scale = 1
+	
+	# arquearse al saltar
+	$Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
 		
 	# vector velocidad en suelo
 	target_velocity.x = direction.x * speed

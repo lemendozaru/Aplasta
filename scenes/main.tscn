@@ -90,20 +90,46 @@ autostart = true
 
 [node name="UserInterface" type="Control" parent="." unique_id=1065826620]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = SubResource("Theme_o6xl0")
 
 [node name="ScoreLabel" type="Label" parent="UserInterface" unique_id=949600962]
 layout_mode = 0
-offset_left = 308.0
-offset_top = 133.0
-offset_right = 386.0
-offset_bottom = 156.0
+offset_left = 28.0
+offset_top = 24.0
+offset_right = 142.0
+offset_bottom = 52.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Puntaje: 0"
 script = ExtResource("5_tefeu")
+
+[node name="Retry" type="ColorRect" parent="UserInterface" unique_id=1750783987]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3764706)
+
+[node name="Label" type="Label" parent="UserInterface/Retry" unique_id=1530371066]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.5
+offset_top = -14.0
+offset_right = 147.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Presiona Enter para entrar"
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
